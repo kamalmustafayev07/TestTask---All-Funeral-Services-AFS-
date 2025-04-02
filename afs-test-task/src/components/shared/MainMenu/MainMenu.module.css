@@ -1,0 +1,55 @@
+.mainmenu{
+    background-color: #3B3B3B;
+    width: 48px;
+    min-height: 100%;
+    padding: 20px 6px;
+}
+
+.mainmenu,.mainmenu_main,.main_upperBtns,.main_bottomBtns{
+    display: flex; 
+    flex-direction: column;
+}
+
+.mainmenu_logo{
+    margin-bottom: 20px;
+}
+
+.icon{
+    width: 20px;
+    height: 20px;
+}
+
+.logo{
+    width: 36px;
+    height: 36px;
+    
+}
+
+.mainmenu_main{
+    height: 100%;
+    justify-content: space-between;
+}
+
+.main_upperBtns,.main_bottomBtns{
+   gap:20px;
+}
+
+.main_bottomBtns{
+    border-top:1px solid #FFFFFF33;
+    padding-top:20px;
+}
+
+.mainmenuButton{
+    background-color: transparent;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.mainmenuButton:hover{
+    background-color: rgba(110, 110, 110, 1);
+
+}
+
+.mainmenuButton_selected{
+    background-color:#FFFFFF33;
+}

@@ -1,0 +1,36 @@
+.sidebar {
+  background-color: white;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.sidebar_buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.sidebar_title{
+    align-self: flex-start;
+    margin-bottom: 40px;
+}
+
+.sidebar_title .title_header {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.3px;
+  vertical-align: middle;
+}
+
+.sidebar_title .title_description {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.24px;
+  vertical-align: middle;
+}
