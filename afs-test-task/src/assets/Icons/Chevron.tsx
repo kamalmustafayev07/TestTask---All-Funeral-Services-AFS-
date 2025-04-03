@@ -1,6 +1,6 @@
 import { SVGProps } from "react"
 const Chevron = (props: SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" {...props}  viewBox="0 0 20 20">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" {...props}  viewBox="0 0 21 21">
     <g clipPath="url(#a)">
       <path
         stroke="currentColor"

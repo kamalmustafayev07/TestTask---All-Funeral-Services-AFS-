@@ -15,9 +15,9 @@ const SideBar = ({ className }: SideBarProps) => {
             <p className={styles.title_description}>Process Manager</p>
         </div>
         <ul className={styles.sidebar_buttons}>
-            <Button><CompanyIcon className={styles.icon} width={16} height={16}/><p>Organizations</p></Button>
-            <Button btnType="outline"><ContractorIcon className={styles.icon} width={16} height={16}/>Contractors</Button>
-            <Button btnType="outline"><AccountIcon className={styles.icon} width={16} height={16}/>Clients</Button>
+            <Button><CompanyIcon className={styles.icon} width={16} height={16}/><span>Organizations</span></Button>
+            <Button btnType="outline"><ContractorIcon className={styles.icon} width={16} height={16}/><span>Contractors</span></Button>
+            <Button btnType="outline"><AccountIcon className={styles.icon} width={16} height={16}/><span>Clients</span></Button>
         </ul>
     </aside>
   );

@@ -1,4 +1,4 @@
-.btn-filled,.btn-outline {
+.btn-filled, .btn-outline {
   position: relative;
   color: white;
   border: none;
@@ -9,22 +9,26 @@
   border-radius: 8px;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 8px; /* Дистанция между иконкой и текстом */
   font-weight: 600;
   font-size: 13px;
   line-height: 20px;
   letter-spacing: 0.48px;
-  vertical-align: middle;
+  text-align: center;
 }
 
 .btn-filled svg, .btn-outline svg {
-  position: absolute;
-  left: 12px;
+  flex-shrink: 0; /* Не даем иконке сжиматься */
 }
 
+.btn-filled span, .btn-outline span {
+  flex-grow: 1;  /* Позволяет тексту занимать оставшееся место */
+  text-align: center; /* Центрирует текст внутри flex */
+}
 
 .btn-filled:hover {
   background-color: #595959;
+  transition: background-color 0.25s ease;
 }
 
 .btn-filled:active {
@@ -32,38 +36,40 @@
 }
 
 .btn-outline {
+  position: relative;
   border: 1px solid #00000066;
   width: 100%;
   background-color: transparent;
   color: #3b3b3b;
 }
 
-
-.btn-outline:hover,
-.btn-flattened:hover {
+.btn-outline:hover {
   color: #6d4aff;
   fill: #6d4aff;
+  transition: color 0.25s ease, fill 0.25s ease;
 }
 
-.btn-outline:active,
-.btn-flattened:active {
+.btn-outline:active {
   color: #6d4aff;
   border-color: #6d4aff;
 }
 
 .btn-icon {
-  color: white;
+  color: black;
   display: flex;
-  border: 0px;
+  border: 0;
+  padding: 6px;
   justify-content: center;
+  background: transparent;
   align-items: center;
   border-radius: 50%;
 }
 
 .btn-icon:hover {
-  background-color: #3b3b3b;
+  background-color: rgba(59, 59, 59, 0.05);
+  transition: background-color 0.25s ease;
 }
 
 .btn-icon:active {
-  background-color: #9981ff;
+  background-color: rgba(153, 129, 255, 1);
 }

@@ -1,0 +1,85 @@
+.companies {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 44px;
+  width: 100%;
+}
+
+.companies_main {
+  display: flex;
+  gap: 32px;
+}
+
+.main_container{
+  min-width: 640px;
+}
+
+.title_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.title_editButtons {
+  display: flex;
+  gap: 4px;
+}
+
+.trashButton {
+  color: red;
+}
+
+.editButton:hover {
+  color: blue;
+}
+
+.backButton_container {
+  display: flex;
+  max-height: 40px;
+}
+
+
+.backButton {
+  width: 32px;
+  height: 32px;
+  align-self: center;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 40px;
+  letter-spacing: 0.25px;
+}
+
+.companies_cards{
+  display: flex;
+  flex-direction: column;
+  gap:16px;
+}
+
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.loader:after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ddd;
+  border-top-color: #3B3B3B;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

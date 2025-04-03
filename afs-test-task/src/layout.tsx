@@ -1,4 +1,6 @@
-import './index.css';
+import MainMenu from "./components/shared/MainMenu/MainMenu";
+import SideBar from "./components/shared/SideBar/SideBar";
+import "./index.css";
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -6,8 +8,10 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <main className="main">
-      {children}
-    </main>
+    <div className="root_container">
+      <MainMenu />
+      <SideBar />
+      <main className="main">{children}</main>
+    </div>
   );
 }

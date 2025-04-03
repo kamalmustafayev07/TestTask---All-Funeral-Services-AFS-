@@ -1,25 +1,25 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MainMenu from "./components/shared/MainMenu/MainMenu.tsx";
-import SideBar from "./components/shared/SideBar/SideBar.tsx";
+import { Route, Routes } from "react-router-dom";
 import "./index.css";
-import Company from "./assets/Icons/Company.tsx";
+import Companies from "./components/shared/Company/Companies";
+import { useEffect } from "react";
+import { useLazyGetAuthQuery } from "./services/companyApi";
 
 
 function Home() {
+  const [fetchAuth] = useLazyGetAuthQuery();
+
+  useEffect(() => {
+    const authToken = localStorage.getItem("authToken");
+    if (!authToken) {
+      fetchAuth("USERNAME"); 
+    }
+  }, [fetchAuth]);
+  
   return (
-    <Router>
-      <div className="home">
-        <MainMenu />
-        <SideBar />
-        <div className="content">
-          <Routes>
-            <Route path="/company" element={<Company/>}/>
-          </Routes>
-        </div>
-      </div>
-    </Router>
+    <Routes>
+      <Route path="/company" element={<Companies />} />
+    </Routes>
   );
 }
 
 export default Home;
-
