@@ -27,3 +27,18 @@ export interface Company {
     photos: Photo[];
   }
   
+
+export interface ContactUpdate{
+    firstname:string;
+    lastname:string;
+    phone:string;
+    email:string;
+}
+
+export interface CompanyDetailsUpdate{
+  name:string;
+  shortName:string;
+  businessEntity:string;
+  contract:Contract;
+  type:string[];
+}

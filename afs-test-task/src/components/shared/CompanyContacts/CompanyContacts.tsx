@@ -1,43 +1,120 @@
-import { EditIcon } from "../../../assets/Icons";
-import { cn, formatDate, formatType } from "../../../lib/utils";
-import { Contract } from "../../../types/company.types";
-import Button from "../../ui/Button/Button";
+import { useState } from "react";
+import { cn, formatPhoneNumber } from "../../../lib/utils";
 import styles from "./CompanyContacts.module.css";
+import Button from "../../ui/Button/Button";
+import { CheckIcon, EditIcon, XIcon } from "../../../assets/Icons";
+import ContactsNormal from "../ContactsNormal/ContactsNormal";
+import ContactsEdit from "../ContactsEdit/ContactsEdit";
+import { useForm } from "react-hook-form";
+import { ContactUpdate } from "../../../types/company.types";
+import { companyStore } from "../../../store/companyStore";
+
 interface CompanyContactsProps {
+  id: number;
   className?: string;
-  businessEntity:string;
-  contract:Contract;
-  type:string[];
+  lastname: string;
+  firstname: string;
+  email: string;
+  phone: string;
 }
 
-const CompanyContacts = ({ className,contract,type,businessEntity }: CompanyContactsProps) => {
+const CompanyContacts = ({
+  className,
+  id,
+  lastname,
+  firstname,
+  phone,
+  email,
+}: CompanyContactsProps) => {
+  const [isEditing, setIsEditing] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+    reset,
+  } = useForm<ContactUpdate>({
+    defaultValues: {
+      firstname,
+      lastname,
+      phone,
+      email,
+    },
+    mode: "onSubmit",
+  });
+
+  const onSubmit = async (data: ContactUpdate) => {
+    const cleanData = {
+      ...data,
+      phone: data.phone.replace(/\D/g, ""),
+    };
+  
+
+    try {
+      console.log(data);
+      await companyStore.fetchUpdateContact(id, cleanData);
+      setIsEditing(false);
+    } catch (err) {
+      console.error("Update failed", err);
+    }
+  };
+  
+
+  const onCancel = () => {
+    reset();
+    setIsEditing(false);
+  };
+
   return (
-    <section className={cn(`${styles.contacts}`, className)}>
+    <section className={cn(styles.contacts, className)}>
       <div className={styles.contacts_header}>
-        <h3 className={styles.header_title}>Company Details</h3>
-        <Button btnType="outline" className={styles.header_editButton}>
-          <EditIcon width={16} height={16} />
-          <span>Edit</span>
-        </Button>
+        <h3 className={styles.header_title}>Contacts</h3>
+        {!isEditing ? (
+          <Button
+            btnType="outline"
+            className={styles.header_editButton}
+            onClick={() => setIsEditing(true)}
+          >
+            <EditIcon width={16} height={16} />
+            <span>Edit</span>
+          </Button>
+        ) : (
+          <div className={styles.buttons_edit}>
+            <Button
+              btnType="outline"
+              className={styles.header_saveButton}
+              onClick={handleSubmit(onSubmit)}
+            >
+              <CheckIcon width={16} height={16} />
+              <span>Save Changes</span>
+            </Button>
+            <Button
+              btnType="outline"
+              className={styles.header_cancelButton}
+              onClick={onCancel}
+            >
+              <XIcon width={16} height={16} />
+              <span>Cancel</span>
+            </Button>
+          </div>
+        )}
       </div>
-      <div className={styles.contacts_main}>
-        <div className={styles.main_line}>
-          <h5 className={styles.line_title}>Agreement:</h5>
-          <p className={styles.line_value}>{contract.no}</p>
-          <p className={styles.line_seperator}>/</p>
-          <p className={styles.line_value}>{formatDate(contract.issue_date)}</p>
-        </div>
-        <div className={styles.main_line}>
-          <h5 className={styles.line_title}>Business entity:</h5>
-          <p className={styles.line_value}>{businessEntity}</p>
-        </div>
-        <div className={styles.main_line}>
-          <h5 className={styles.line_title}>Company type:</h5>
-          <p className={styles.line_value}>
-            {formatType(type)}
-          </p>
-        </div>
-      </div>
+      {!isEditing ? (
+        <ContactsNormal
+          lastname={lastname}
+          firstname={firstname}
+          email={email}
+          phone={phone}
+        />
+      ) : (
+        <ContactsEdit
+          register={register}
+          setValue={setValue}
+          firstname={firstname}
+          lastname={lastname}
+        />
+      )}
     </section>
   );
 };

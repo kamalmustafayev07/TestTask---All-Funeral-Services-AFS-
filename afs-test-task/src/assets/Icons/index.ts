@@ -12,6 +12,6 @@ export { default as SignOutIcon } from './SignOut';
 export { default as TrashIcon } from './Trash';
 export { default as XIcon } from './X';
 export { default as SearchIcon } from './Search';
-
-
+export { default as ChevronDownIcon } from './ChevronDown';
+export {default as ChevronUp} from "./ChevronUp";
 

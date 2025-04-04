@@ -24,3 +24,10 @@
   min-height: 100%;
   display: flex; 
 }
+
+.react-datepicker__day--selected,
+.react-datepicker__day--selected:hover {
+  background-color: rgba(53, 205, 253, 1) !important;
+  color: white !important;
+}
+

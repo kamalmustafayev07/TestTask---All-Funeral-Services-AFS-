@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Company } from "../types/company.types";
+import { Company, ContactUpdate } from "../types/company.types";
 import { Contact } from "../types/contact.types";
 
 const baseQuery = fetchBaseQuery({
@@ -31,7 +31,7 @@ export const companyApi = createApi({
     getCompany: builder.query<Company,number>({
       query: (id) => `/companies/${id}`,
     }),
-    updateCompany: builder.mutation<any, { id: string; data: any }>({
+    updateCompany: builder.mutation<any, { id: number; data: any }>({
       query: ({ id, data }) => ({
         url: `/companies/${id}`,
         method: "PATCH",
@@ -64,7 +64,7 @@ export const companyApi = createApi({
     getContact: builder.query<Contact, number>({
       query: (id) => `/contacts/${id}`,
     }),
-    updateContact: builder.mutation<any, { id: string; data: any }>({
+    updateContact: builder.mutation<any, { id: number; data: ContactUpdate }>({
       query: ({ id, data }) => ({
         url: `/contacts/${id}`,
         method: "PATCH",

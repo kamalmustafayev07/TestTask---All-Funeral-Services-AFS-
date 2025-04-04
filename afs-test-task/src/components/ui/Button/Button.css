@@ -1,4 +1,5 @@
-.btn-filled, .btn-outline {
+.btn-filled,
+.btn-outline {
   position: relative;
   color: white;
   border: none;
@@ -9,7 +10,7 @@
   border-radius: 8px;
   align-items: center;
   justify-content: center;
-  gap: 8px; /* Дистанция между иконкой и текстом */
+  gap: 8px;
   font-weight: 600;
   font-size: 13px;
   line-height: 20px;
@@ -17,13 +18,15 @@
   text-align: center;
 }
 
-.btn-filled svg, .btn-outline svg {
-  flex-shrink: 0; /* Не даем иконке сжиматься */
+.btn-filled svg,
+.btn-outline svg {
+  flex-shrink: 0;
 }
 
-.btn-filled span, .btn-outline span {
-  flex-grow: 1;  /* Позволяет тексту занимать оставшееся место */
-  text-align: center; /* Центрирует текст внутри flex */
+.btn-filled span,
+.btn-outline span {
+  flex-grow: 1;
+  text-align: center;
 }
 
 .btn-filled:hover {
@@ -72,4 +75,11 @@
 
 .btn-icon:active {
   background-color: rgba(153, 129, 255, 1);
+}
+
+
+.btn-filled span,
+.btn-outline span,
+.btn-icon span {
+  white-space: nowrap; 
 }

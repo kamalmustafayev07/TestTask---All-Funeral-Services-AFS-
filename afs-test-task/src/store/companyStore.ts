@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import { companyApi } from "../services/companyApi";
 import { store } from "./index";
-import { Company } from "../types/company.types";
+import { Company, CompanyDetailsUpdate, ContactUpdate } from "../types/company.types";
 import { Contact } from "../types/contact.types";
 
 class CompanyStore {
@@ -9,7 +9,7 @@ class CompanyStore {
   contact: Contact | null = null;
   token: string | null = null;
   isLoading: boolean = false;
-
+  isUpdating:boolean = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -30,6 +30,10 @@ class CompanyStore {
 
   setLoading(loading: boolean) {
     this.isLoading = loading;
+  }
+
+  setUpdating(updating: boolean) {
+    this.isUpdating = updating;
   }
 
   async authenticate() {
@@ -53,6 +57,31 @@ class CompanyStore {
       console.error("Ошибка при загрузке компании:", error);
     } finally {
       this.setLoading(false);
+    }
+  }
+
+  async fetchUpdateContact(id: number, data:ContactUpdate) {
+    this.setUpdating(true);
+    try {
+      console.log("Обновляем контакт с данными:", data);
+      await store.dispatch(companyApi.endpoints.updateContact.initiate({id,data})).unwrap();
+    } catch (error) {
+      console.error("Ошибка при загрузке компании:", error);
+    } finally {
+      this.setUpdating(false);
+    }
+  }
+
+
+  async fetchUpdateCompanyDetails(id: number, data:CompanyDetailsUpdate) {
+    this.setUpdating(true);
+    try {
+      console.log("Обновляем контакт с данными:", data);
+      await store.dispatch(companyApi.endpoints.updateCompany.initiate({id,data})).unwrap();
+    } catch (error) {
+      console.error("Ошибка при загрузке компании:", error);
+    } finally {
+      this.setUpdating(false);
     }
   }
 

@@ -26,37 +26,28 @@
   letter-spacing: 0.48px;
 }
 
-.main_line {
+.buttons_edit {
   display: flex;
-  font-weight: 400;
-  font-size: 14px;
-  align-items: center;
-  line-height: 24px;
-  letter-spacing: 0.3px;
-  vertical-align: middle;
+  gap: 12px;
 }
 
-.line_title {
-  min-width: 160px;
-  font-size: 13px;
-  font-weight: 400;
+.header_saveButton,
+.header_cancelButton {
+  height: 28px;
+}
+
+.header_saveButton {
+  width: 133px;
+  font-weight: 600;
+  font-size: 11px;
   line-height: 20px;
-  letter-spacing: 0.25px;
+  letter-spacing: 0.48px;
+  text-align: center;
   vertical-align: middle;
-  color: rgba(0, 0, 0, 0.5);
 }
 
-.line_seperator {
-  margin: 0px 12px;
-  color: rgba(0, 0, 0, 0.5);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: 0.3px;
-  vertical-align: middle;
-}
-.contacts_main {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+
+.header_cancelButton{
+  width: 91px;
+  font-size: 11px;
 }

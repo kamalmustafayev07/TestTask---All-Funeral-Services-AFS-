@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
-import { cn } from "../../../lib/utils";
+import { cn, formatPhoneNumber } from "../../../lib/utils";
 import Button from "../../ui/Button/Button";
 import styles from "./Companies.module.css";
 import { ChevronIcon, EditIcon, TrashIcon } from "../../../assets/Icons/index";
@@ -46,12 +46,15 @@ const Company = observer(({ className }: CompanyProps) => {
               </div>
             </div>
             <div className={styles.companies_cards}>
-              <CompanyContacts
+              <CompanyDetails
+                id={+company.id}
+                name={company.name}
+                shortName={company.shortName}
                 businessEntity={company.businessEntity}
                 contract={company.contract}
                 type={company.type}
               />
-              <CompanyDetails firstname={contact.firstname} lastname={contact.lastname} email={contact.email} phone={contact.phone} />
+              <CompanyContacts id={+contact.id} firstname={contact.firstname} lastname={contact.lastname} email={contact.email} phone={formatPhoneNumber(contact.phone)} />
             </div>
           </div>
         </section>
